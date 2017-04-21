@@ -1,0 +1,2177 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-angular-drag-and-drop-lists/node_modules/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-angular-drag-and-drop-lists">npmtest-angular-drag-and-drop-lists (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-angular-drag-and-drop-lists/node_modules/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">4.42% <small>(10 / 226)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 172)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 38)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">4.85% <small>(10 / 206)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-angular-drag-and-drop-lists/node_modules/angular-drag-and-drop-lists/</a> &#187; angular-drag-and-drop-lists.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * angular-drag-and-drop-lists v2.1.0
+ *
+ * Copyright (c) 2014 Marcel Juenemann marcel@juenemann.cc
+ * Copyright (c) 2014-2017 Google Inc.
+ * https://github.com/marceljuenemann/angular-drag-and-drop-lists
+ *
+ * License: MIT
+ */
+(<span class="fstat-no" title="function not covered" >function(dndLists) {</span>
+&nbsp;
+  // In standard-compliant browsers we use a custom mime type and also encode the dnd-type in it.
+  // However, IE and Edge only support a limited number of mime types. The workarounds are described
+  // in https://github.com/marceljuenemann/angular-drag-and-drop-lists/wiki/Data-Transfer-Design
+<span class="cstat-no" title="statement not covered" >  var MIME_TYPE = 'application/x-dnd';</span>
+<span class="cstat-no" title="statement not covered" >  var EDGE_MIME_TYPE = 'application/json';</span>
+<span class="cstat-no" title="statement not covered" >  var MSIE_MIME_TYPE = 'Text';</span>
+&nbsp;
+  // All valid HTML5 drop effects, in the order in which we prefer to use them.
+<span class="cstat-no" title="statement not covered" >  var ALL_EFFECTS = ['move', 'copy', 'link'];</span>
+&nbsp;
+  /**
+   * Use the dnd-draggable attribute to make your element draggable
+   *
+   * Attributes:
+   * - dnd-draggable      Required attribute. The value has to be an object that represents the data
+   *                      of the element. In case of a drag and drop operation the object will be
+   *                      serialized and unserialized on the receiving end.
+   * - dnd-effect-allowed Use this attribute to limit the operations that can be performed. Valid
+   *                      options are "move", "copy" and "link", as well as "all", "copyMove",
+   *                      "copyLink" and "linkMove". The semantics of these operations are up to you
+   *                      and have to be implemented using the callbacks described below. If you
+   *                      allow multiple options, the user can choose between them by using the
+   *                      modifier keys (OS specific). The cursor will be changed accordingly,
+   *                      expect for IE and Edge, where this is not supported.
+   * - dnd-type           Use this attribute if you have different kinds of items in your
+   *                      application and you want to limit which items can be dropped into which
+   *                      lists. Combine with dnd-allowed-types on the dnd-list(s). This attribute
+   *                      must be a lower case string. Upper case characters can be used, but will
+   *                      be converted to lower case automatically.
+   * - dnd-disable-if     You can use this attribute to dynamically disable the draggability of the
+   *                      element. This is useful if you have certain list items that you don't want
+   *                      to be draggable, or if you want to disable drag &amp; drop completely without
+   *                      having two different code branches (e.g. only allow for admins).
+   *
+   * Callbacks:
+   * - dnd-dragstart      Callback that is invoked when the element was dragged. The original
+   *                      dragstart event will be provided in the local event variable.
+   * - dnd-moved          Callback that is invoked when the element was moved. Usually you will
+   *                      remove your element from the original list in this callback, since the
+   *                      directive is not doing that for you automatically. The original dragend
+   *                      event will be provided in the local event variable.
+   * - dnd-copied         Same as dnd-moved, just that it is called when the element was copied
+   *                      instead of moved, so you probably want to implement a different logic.
+   * - dnd-linked         Same as dnd-moved, just that it is called when the element was linked
+   *                      instead of moved, so you probably want to implement a different logic.
+   * - dnd-canceled       Callback that is invoked if the element was dragged, but the operation was
+   *                      canceled and the element was not dropped. The original dragend event will
+   *                      be provided in the local event variable.
+   * - dnd-dragend        Callback that is invoked when the drag operation ended. Available local
+   *                      variables are event and dropEffect.
+   * - dnd-selected       Callback that is invoked when the element was clicked but not dragged.
+   *                      The original click event will be provided in the local event variable.
+   * - dnd-callback       Custom callback that is passed to dropzone callbacks and can be used to
+   *                      communicate between source and target scopes. The dropzone can pass user
+   *                      defined variables to this callback.
+   *
+   * CSS classes:
+   * - dndDragging        This class will be added to the element while the element is being
+   *                      dragged. It will affect both the element you see while dragging and the
+   *                      source element that stays at it's position. Do not try to hide the source
+   *                      element with this class, because that will abort the drag operation.
+   * - dndDraggingSource  This class will be added to the element after the drag operation was
+   *                      started, meaning it only affects the original element that is still at
+   *                      it's source position, and not the "element" that the user is dragging with
+   *                      his mouse pointer.
+   */
+<span class="cstat-no" title="statement not covered" >  dndLists.directive('dndDraggable', ['$parse', '$timeout', <span class="fstat-no" title="function not covered" >function($parse, $timeout) {</span></span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function(scope, element, attr) {</span></span>
+      // Set the HTML5 draggable attribute on the element.
+<span class="cstat-no" title="statement not covered" >      element.attr("draggable", "true");</span>
+&nbsp;
+      // If the dnd-disable-if attribute is set, we have to watch that.
+<span class="cstat-no" title="statement not covered" >      if (attr.dndDisableIf) {</span>
+<span class="cstat-no" title="statement not covered" >        scope.$watch(attr.dndDisableIf, <span class="fstat-no" title="function not covered" >function(disabled) {</span></span>
+<span class="cstat-no" title="statement not covered" >          element.attr("draggable", !disabled);</span>
+        });
+      }
+&nbsp;
+      /**
+       * When the drag operation is started we have to prepare the dataTransfer object,
+       * which is the primary way we communicate with the target element
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('dragstart', <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+&nbsp;
+        // Check whether the element is draggable, since dragstart might be triggered on a child.
+<span class="cstat-no" title="statement not covered" >        if (element.attr('draggable') == 'false') <span class="cstat-no" title="statement not covered" >return true;</span></span>
+&nbsp;
+        // Initialize global state.
+<span class="cstat-no" title="statement not covered" >        dndState.isDragging = true;</span>
+<span class="cstat-no" title="statement not covered" >        dndState.itemType = attr.dndType &amp;&amp; scope.$eval(attr.dndType).toLowerCase();</span>
+&nbsp;
+        // Set the allowed drop effects. See below for special IE handling.
+<span class="cstat-no" title="statement not covered" >        dndState.dropEffect = "none";</span>
+<span class="cstat-no" title="statement not covered" >        dndState.effectAllowed = attr.dndEffectAllowed || ALL_EFFECTS[0];</span>
+<span class="cstat-no" title="statement not covered" >        event.dataTransfer.effectAllowed = dndState.effectAllowed;</span>
+&nbsp;
+        // Internet Explorer and Microsoft Edge don't support custom mime types, see design doc:
+        // https://github.com/marceljuenemann/angular-drag-and-drop-lists/wiki/Data-Transfer-Design
+<span class="cstat-no" title="statement not covered" >        var item = scope.$eval(attr.dndDraggable);</span>
+<span class="cstat-no" title="statement not covered" >        var mimeType = MIME_TYPE + (dndState.itemType ? ('-' + dndState.itemType) : '');</span>
+<span class="cstat-no" title="statement not covered" >        try {</span>
+<span class="cstat-no" title="statement not covered" >          event.dataTransfer.setData(mimeType, angular.toJson(item));</span>
+        } catch (e) {
+          // Setting a custom MIME type did not work, we are probably in IE or Edge.
+<span class="cstat-no" title="statement not covered" >          var data = angular.toJson({item: item, type: dndState.itemType});</span>
+<span class="cstat-no" title="statement not covered" >          try {</span>
+<span class="cstat-no" title="statement not covered" >            event.dataTransfer.setData(EDGE_MIME_TYPE, data);</span>
+          } catch (e) {
+            // We are in Internet Explorer and can only use the Text MIME type. Also note that IE
+            // does not allow changing the cursor in the dragover event, therefore we have to choose
+            // the one we want to display now by setting effectAllowed.
+<span class="cstat-no" title="statement not covered" >            var effectsAllowed = filterEffects(ALL_EFFECTS, dndState.effectAllowed);</span>
+<span class="cstat-no" title="statement not covered" >            event.dataTransfer.effectAllowed = effectsAllowed[0];</span>
+<span class="cstat-no" title="statement not covered" >            event.dataTransfer.setData(MSIE_MIME_TYPE, data);</span>
+          }
+        }
+&nbsp;
+        // Add CSS classes. See documentation above.
+<span class="cstat-no" title="statement not covered" >        element.addClass("dndDragging");</span>
+<span class="cstat-no" title="statement not covered" >        $timeout(<span class="fstat-no" title="function not covered" >function() {</span> <span class="cstat-no" title="statement not covered" >element.addClass("dndDraggingSource"); </span>}, 0);</span>
+&nbsp;
+        // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
+<span class="cstat-no" title="statement not covered" >        if (event._dndHandle &amp;&amp; event.dataTransfer.setDragImage) {</span>
+<span class="cstat-no" title="statement not covered" >          event.dataTransfer.setDragImage(element[0], 0, 0);</span>
+        }
+&nbsp;
+        // Invoke dragstart callback and prepare extra callback for dropzone.
+<span class="cstat-no" title="statement not covered" >        $parse(attr.dndDragstart)(scope, {event: event});</span>
+<span class="cstat-no" title="statement not covered" >        if (attr.dndCallback) {</span>
+<span class="cstat-no" title="statement not covered" >          var callback = $parse(attr.dndCallback);</span>
+<span class="cstat-no" title="statement not covered" >          dndState.callback = <span class="fstat-no" title="function not covered" >function(params) {</span> <span class="cstat-no" title="statement not covered" >return callback(scope, params || {}); </span>};</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        event.stopPropagation();</span>
+      });
+&nbsp;
+      /**
+       * The dragend event is triggered when the element was dropped or when the drag
+       * operation was aborted (e.g. hit escape button). Depending on the executed action
+       * we will invoke the callbacks specified with the dnd-moved or dnd-copied attribute.
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('dragend', <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+&nbsp;
+        // Invoke callbacks. Usually we would use event.dataTransfer.dropEffect to determine
+        // the used effect, but Chrome has not implemented that field correctly. On Windows
+        // it always sets it to 'none', while Chrome on Linux sometimes sets it to something
+        // else when it's supposed to send 'none' (drag operation aborted).
+<span class="cstat-no" title="statement not covered" >        scope.$apply(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >          var dropEffect = dndState.dropEffect;</span>
+<span class="cstat-no" title="statement not covered" >          var cb = {copy: 'dndCopied', link: 'dndLinked', move: 'dndMoved', none: 'dndCanceled'};</span>
+<span class="cstat-no" title="statement not covered" >          $parse(attr[cb[dropEffect]])(scope, {event: event});</span>
+<span class="cstat-no" title="statement not covered" >          $parse(attr.dndDragend)(scope, {event: event, dropEffect: dropEffect});</span>
+        });
+&nbsp;
+        // Clean up
+<span class="cstat-no" title="statement not covered" >        dndState.isDragging = false;</span>
+<span class="cstat-no" title="statement not covered" >        dndState.callback = undefined;</span>
+<span class="cstat-no" title="statement not covered" >        element.removeClass("dndDragging");</span>
+<span class="cstat-no" title="statement not covered" >        element.removeClass("dndDraggingSource");</span>
+<span class="cstat-no" title="statement not covered" >        event.stopPropagation();</span>
+&nbsp;
+        // In IE9 it is possible that the timeout from dragstart triggers after the dragend handler.
+<span class="cstat-no" title="statement not covered" >        $timeout(<span class="fstat-no" title="function not covered" >function() {</span> <span class="cstat-no" title="statement not covered" >element.removeClass("dndDraggingSource"); </span>}, 0);</span>
+      });
+&nbsp;
+      /**
+       * When the element is clicked we invoke the callback function
+       * specified with the dnd-selected attribute.
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('click', <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (!attr.dndSelected) <span class="cstat-no" title="statement not covered" >return;</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+<span class="cstat-no" title="statement not covered" >        scope.$apply(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >          $parse(attr.dndSelected)(scope, {event: event});</span>
+        });
+&nbsp;
+        // Prevent triggering dndSelected in parent elements.
+<span class="cstat-no" title="statement not covered" >        event.stopPropagation();</span>
+      });
+&nbsp;
+      /**
+       * Workaround to make element draggable in IE9
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('selectstart', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (this.dragDrop) <span class="cstat-no" title="statement not covered" >this.dragDrop();</span></span>
+      });
+    };
+  }]);
+&nbsp;
+  /**
+   * Use the dnd-list attribute to make your list element a dropzone. Usually you will add a single
+   * li element as child with the ng-repeat directive. If you don't do that, we will not be able to
+   * position the dropped element correctly. If you want your list to be sortable, also add the
+   * dnd-draggable directive to your li element(s).
+   *
+   * Attributes:
+   * - dnd-list             Required attribute. The value has to be the array in which the data of
+   *                        the dropped element should be inserted. The value can be blank if used
+   *                        with a custom dnd-drop handler that always returns true.
+   * - dnd-allowed-types    Optional array of allowed item types. When used, only items that had a
+   *                        matching dnd-type attribute will be dropable. Upper case characters will
+   *                        automatically be converted to lower case.
+   * - dnd-effect-allowed   Optional string expression that limits the drop effects that can be
+   *                        performed in the list. See dnd-effect-allowed on dnd-draggable for more
+   *                        details on allowed options. The default value is all.
+   * - dnd-disable-if       Optional boolean expresssion. When it evaluates to true, no dropping
+   *                        into the list is possible. Note that this also disables rearranging
+   *                        items inside the list.
+   * - dnd-horizontal-list  Optional boolean expresssion. When it evaluates to true, the positioning
+   *                        algorithm will use the left and right halfs of the list items instead of
+   *                        the upper and lower halfs.
+   * - dnd-external-sources Optional boolean expression. When it evaluates to true, the list accepts
+   *                        drops from sources outside of the current browser tab. This allows to
+   *                        drag and drop accross different browser tabs. The only major browser
+   *                        that does not support this is currently Microsoft Edge.
+   *
+   * Callbacks:
+   * - dnd-dragover         Optional expression that is invoked when an element is dragged over the
+   *                        list. If the expression is set, but does not return true, the element is
+   *                        not allowed to be dropped. The following variables will be available:
+   *                        - event: The original dragover event sent by the browser.
+   *                        - index: The position in the list at which the element would be dropped.
+   *                        - type: The dnd-type set on the dnd-draggable, or undefined if non was
+   *                          set. Will be null for drops from external sources in IE and Edge,
+   *                          since we don't know the type in those cases.
+   *                        - dropEffect: One of move, copy or link, see dnd-effect-allowed.
+   *                        - external: Whether the element was dragged from an external source.
+   *                        - callback: If dnd-callback was set on the source element, this is a
+   *                          function reference to the callback. The callback can be invoked with
+   *                          custom variables like this: callback({var1: value1, var2: value2}).
+   *                          The callback will be executed on the scope of the source element. If
+   *                          dnd-external-sources was set and external is true, this callback will
+   *                          not be available.
+   * - dnd-drop             Optional expression that is invoked when an element is dropped on the
+   *                        list. The same variables as for dnd-dragover will be available, with the
+   *                        exception that type is always known and therefore never null. There
+   *                        will also be an item variable, which is the transferred object. The
+   *                        return value determines the further handling of the drop:
+   *                        - falsy: The drop will be canceled and the element won't be inserted.
+   *                        - true: Signalises that the drop is allowed, but the dnd-drop
+   *                          callback already took care of inserting the element.
+   *                        - otherwise: All other return values will be treated as the object to
+   *                          insert into the array. In most cases you want to simply return the
+   *                          item parameter, but there are no restrictions on what you can return.
+   * - dnd-inserted         Optional expression that is invoked after a drop if the element was
+   *                        actually inserted into the list. The same local variables as for
+   *                        dnd-drop will be available. Note that for reorderings inside the same
+   *                        list the old element will still be in the list due to the fact that
+   *                        dnd-moved was not called yet.
+   *
+   * CSS classes:
+   * - dndPlaceholder       When an element is dragged over the list, a new placeholder child
+   *                        element will be added. This element is of type li and has the class
+   *                        dndPlaceholder set. Alternatively, you can define your own placeholder
+   *                        by creating a child element with dndPlaceholder class.
+   * - dndDragover          Will be added to the list while an element is dragged over the list.
+   */
+<span class="cstat-no" title="statement not covered" >  dndLists.directive('dndList', ['$parse', <span class="fstat-no" title="function not covered" >function($parse) {</span></span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function(scope, element, attr) {</span></span>
+      // While an element is dragged over the list, this placeholder element is inserted
+      // at the location where the element would be inserted after dropping.
+<span class="cstat-no" title="statement not covered" >      var placeholder = getPlaceholderElement();</span>
+<span class="cstat-no" title="statement not covered" >      placeholder.remove();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var placeholderNode = placeholder[0];</span>
+<span class="cstat-no" title="statement not covered" >      var listNode = element[0];</span>
+<span class="cstat-no" title="statement not covered" >      var listSettings = {};</span>
+&nbsp;
+      /**
+       * The dragenter event is fired when a dragged element or text selection enters a valid drop
+       * target. According to the spec, we either need to have a dropzone attribute or listen on
+       * dragenter events and call preventDefault(). It should be noted though that no browser seems
+       * to enforce this behaviour.
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('dragenter', <span class="fstat-no" title="function not covered" >function (event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+&nbsp;
+        // Calculate list properties, so that we don't have to repeat this on every dragover event.
+<span class="cstat-no" title="statement not covered" >        var types = attr.dndAllowedTypes &amp;&amp; scope.$eval(attr.dndAllowedTypes);</span>
+<span class="cstat-no" title="statement not covered" >        listSettings = {</span>
+          allowedTypes: angular.isArray(types) &amp;&amp; types.join('|').toLowerCase().split('|'),
+          disabled: attr.dndDisableIf &amp;&amp; scope.$eval(attr.dndDisableIf),
+          externalSources: attr.dndExternalSources &amp;&amp; scope.$eval(attr.dndExternalSources),
+          horizontal: attr.dndHorizontalList &amp;&amp; scope.$eval(attr.dndHorizontalList)
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var mimeType = getMimeType(event.dataTransfer.types);</span>
+<span class="cstat-no" title="statement not covered" >        if (!mimeType || !isDropAllowed(getItemType(mimeType))) <span class="cstat-no" title="statement not covered" >return true;</span></span>
+<span class="cstat-no" title="statement not covered" >        event.preventDefault();</span>
+      });
+&nbsp;
+      /**
+       * The dragover event is triggered "every few hundred milliseconds" while an element
+       * is being dragged over our list, or over an child element.
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('dragover', <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+&nbsp;
+        // Check whether the drop is allowed and determine mime type.
+<span class="cstat-no" title="statement not covered" >        var mimeType = getMimeType(event.dataTransfer.types);</span>
+<span class="cstat-no" title="statement not covered" >        var itemType = getItemType(mimeType);</span>
+<span class="cstat-no" title="statement not covered" >        if (!mimeType || !isDropAllowed(itemType)) <span class="cstat-no" title="statement not covered" >return true;</span></span>
+&nbsp;
+        // Make sure the placeholder is shown, which is especially important if the list is empty.
+<span class="cstat-no" title="statement not covered" >        if (placeholderNode.parentNode != listNode) {</span>
+<span class="cstat-no" title="statement not covered" >          element.append(placeholder);</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (event.target != listNode) {</span>
+          // Try to find the node direct directly below the list node.
+<span class="cstat-no" title="statement not covered" >          var listItemNode = event.target;</span>
+<span class="cstat-no" title="statement not covered" >          while (listItemNode.parentNode != listNode &amp;&amp; listItemNode.parentNode) {</span>
+<span class="cstat-no" title="statement not covered" >            listItemNode = listItemNode.parentNode;</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if (listItemNode.parentNode == listNode &amp;&amp; listItemNode != placeholderNode) {</span>
+            // If the mouse pointer is in the upper half of the list item element,
+            // we position the placeholder before the list item, otherwise after it.
+<span class="cstat-no" title="statement not covered" >            var rect = listItemNode.getBoundingClientRect();</span>
+<span class="cstat-no" title="statement not covered" >            if (listSettings.horizontal) {</span>
+<span class="cstat-no" title="statement not covered" >              var isFirstHalf = event.clientX &lt; rect.left + rect.width / 2;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >              var isFirstHalf = event.clientY &lt; rect.top + rect.height / 2;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            listNode.insertBefore(placeholderNode,</span>
+                isFirstHalf ? listItemNode : listItemNode.nextSibling);
+          }
+        }
+&nbsp;
+        // In IE we set a fake effectAllowed in dragstart to get the correct cursor, we therefore
+        // ignore the effectAllowed passed in dataTransfer. We must also not access dataTransfer for
+        // drops from external sources, as that throws an exception.
+<span class="cstat-no" title="statement not covered" >        var ignoreDataTransfer = mimeType == MSIE_MIME_TYPE;</span>
+<span class="cstat-no" title="statement not covered" >        var dropEffect = getDropEffect(event, ignoreDataTransfer);</span>
+<span class="cstat-no" title="statement not covered" >        if (dropEffect == 'none') <span class="cstat-no" title="statement not covered" >return stopDragover();</span></span>
+&nbsp;
+        // At this point we invoke the callback, which still can disallow the drop.
+        // We can't do this earlier because we want to pass the index of the placeholder.
+<span class="cstat-no" title="statement not covered" >        if (attr.dndDragover &amp;&amp; !invokeCallback(attr.dndDragover, event, dropEffect, itemType)) {</span>
+<span class="cstat-no" title="statement not covered" >          return stopDragover();</span>
+        }
+&nbsp;
+        // Set dropEffect to modify the cursor shown by the browser, unless we're in IE, where this
+        // is not supported. This must be done after preventDefault in Firefox.
+<span class="cstat-no" title="statement not covered" >        event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >        if (!ignoreDataTransfer) {</span>
+<span class="cstat-no" title="statement not covered" >          event.dataTransfer.dropEffect = dropEffect;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        element.addClass("dndDragover");</span>
+<span class="cstat-no" title="statement not covered" >        event.stopPropagation();</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
+      });
+&nbsp;
+      /**
+       * When the element is dropped, we use the position of the placeholder element as the
+       * position where we insert the transferred data. This assumes that the list has exactly
+       * one child element per array element.
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('drop', <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+&nbsp;
+        // Check whether the drop is allowed and determine mime type.
+<span class="cstat-no" title="statement not covered" >        var mimeType = getMimeType(event.dataTransfer.types);</span>
+<span class="cstat-no" title="statement not covered" >        var itemType = getItemType(mimeType);</span>
+<span class="cstat-no" title="statement not covered" >        if (!mimeType || !isDropAllowed(itemType)) <span class="cstat-no" title="statement not covered" >return true;</span></span>
+&nbsp;
+        // The default behavior in Firefox is to interpret the dropped element as URL and
+        // forward to it. We want to prevent that even if our drop is aborted.
+<span class="cstat-no" title="statement not covered" >        event.preventDefault();</span>
+&nbsp;
+        // Unserialize the data that was serialized in dragstart.
+<span class="cstat-no" title="statement not covered" >        try {</span>
+<span class="cstat-no" title="statement not covered" >          var data = JSON.parse(event.dataTransfer.getData(mimeType));</span>
+        } catch(e) {
+<span class="cstat-no" title="statement not covered" >          return stopDragover();</span>
+        }
+&nbsp;
+        // Drops with invalid types from external sources might not have been filtered out yet.
+<span class="cstat-no" title="statement not covered" >        if (mimeType == MSIE_MIME_TYPE || mimeType == EDGE_MIME_TYPE) {</span>
+<span class="cstat-no" title="statement not covered" >          itemType = data.type || undefined;</span>
+<span class="cstat-no" title="statement not covered" >          data = data.item;</span>
+<span class="cstat-no" title="statement not covered" >          if (!isDropAllowed(itemType)) <span class="cstat-no" title="statement not covered" >return stopDragover();</span></span>
+        }
+&nbsp;
+        // Special handling for internal IE drops, see dragover handler.
+<span class="cstat-no" title="statement not covered" >        var ignoreDataTransfer = mimeType == MSIE_MIME_TYPE;</span>
+<span class="cstat-no" title="statement not covered" >        var dropEffect = getDropEffect(event, ignoreDataTransfer);</span>
+<span class="cstat-no" title="statement not covered" >        if (dropEffect == 'none') <span class="cstat-no" title="statement not covered" >return stopDragover();</span></span>
+&nbsp;
+        // Invoke the callback, which can transform the transferredObject and even abort the drop.
+<span class="cstat-no" title="statement not covered" >        var index = getPlaceholderIndex();</span>
+<span class="cstat-no" title="statement not covered" >        if (attr.dndDrop) {</span>
+<span class="cstat-no" title="statement not covered" >          data = invokeCallback(attr.dndDrop, event, dropEffect, itemType, index, data);</span>
+<span class="cstat-no" title="statement not covered" >          if (!data) <span class="cstat-no" title="statement not covered" >return stopDragover();</span></span>
+        }
+&nbsp;
+        // The drop is definitely going to happen now, store the dropEffect.
+<span class="cstat-no" title="statement not covered" >        dndState.dropEffect = dropEffect;</span>
+<span class="cstat-no" title="statement not covered" >        if (!ignoreDataTransfer) {</span>
+<span class="cstat-no" title="statement not covered" >          event.dataTransfer.dropEffect = dropEffect;</span>
+        }
+&nbsp;
+        // Insert the object into the array, unless dnd-drop took care of that (returned true).
+<span class="cstat-no" title="statement not covered" >        if (data !== true) {</span>
+<span class="cstat-no" title="statement not covered" >          scope.$apply(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            scope.$eval(attr.dndList).splice(index, 0, data);</span>
+          });
+        }
+<span class="cstat-no" title="statement not covered" >        invokeCallback(attr.dndInserted, event, dropEffect, itemType, index, data);</span>
+&nbsp;
+        // Clean up
+<span class="cstat-no" title="statement not covered" >        stopDragover();</span>
+<span class="cstat-no" title="statement not covered" >        event.stopPropagation();</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
+      });
+&nbsp;
+      /**
+       * We have to remove the placeholder when the element is no longer dragged over our list. The
+       * problem is that the dragleave event is not only fired when the element leaves our list,
+       * but also when it leaves a child element. Therefore, we determine whether the mouse cursor
+       * is still pointing to an element inside the list or not.
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('dragleave', <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var newTarget = document.elementFromPoint(event.clientX, event.clientY);</span>
+<span class="cstat-no" title="statement not covered" >        if (listNode.contains(newTarget) &amp;&amp; !event._dndPhShown) {</span>
+          // Signalize to potential parent lists that a placeholder is already shown.
+<span class="cstat-no" title="statement not covered" >          event._dndPhShown = true;</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          stopDragover();</span>
+        }
+      });
+&nbsp;
+      /**
+       * Given the types array from the DataTransfer object, returns the first valid mime type.
+       * A type is valid if it starts with MIME_TYPE, or it equals MSIE_MIME_TYPE or EDGE_MIME_TYPE.
+       */
+<span class="fstat-no" title="function not covered" >      function getMimeType(types) {</span>
+<span class="cstat-no" title="statement not covered" >        if (!types) <span class="cstat-no" title="statement not covered" >return MSIE_MIME_TYPE; </span></span>// IE 9 workaround.
+<span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; types.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >          if (types[i] == MSIE_MIME_TYPE || types[i] == EDGE_MIME_TYPE ||</span>
+              types[i].substr(0, MIME_TYPE.length) == MIME_TYPE) {
+<span class="cstat-no" title="statement not covered" >            return types[i];</span>
+          }
+        }
+<span class="cstat-no" title="statement not covered" >        return null;</span>
+      }
+&nbsp;
+      /**
+       * Determines the type of the item from the dndState, or from the mime type for items from
+       * external sources. Returns undefined if no item type was set and null if the item type could
+       * not be determined.
+       */
+<span class="fstat-no" title="function not covered" >      function getItemType(mimeType) {</span>
+<span class="cstat-no" title="statement not covered" >        if (dndState.isDragging) <span class="cstat-no" title="statement not covered" >return dndState.itemType || undefined;</span></span>
+<span class="cstat-no" title="statement not covered" >        if (mimeType == MSIE_MIME_TYPE || mimeType == EDGE_MIME_TYPE) <span class="cstat-no" title="statement not covered" >return null;</span></span>
+<span class="cstat-no" title="statement not covered" >        return (mimeType &amp;&amp; mimeType.substr(MIME_TYPE.length + 1)) || undefined;</span>
+      }
+&nbsp;
+      /**
+       * Checks various conditions that must be fulfilled for a drop to be allowed, including the
+       * dnd-allowed-types attribute. If the item Type is unknown (null), the drop will be allowed.
+       */
+<span class="fstat-no" title="function not covered" >      function isDropAllowed(itemType) {</span>
+<span class="cstat-no" title="statement not covered" >        if (listSettings.disabled) <span class="cstat-no" title="statement not covered" >return false;</span></span>
+<span class="cstat-no" title="statement not covered" >        if (!listSettings.externalSources &amp;&amp; !dndState.isDragging) <span class="cstat-no" title="statement not covered" >return false;</span></span>
+<span class="cstat-no" title="statement not covered" >        if (!listSettings.allowedTypes || itemType === null) <span class="cstat-no" title="statement not covered" >return true;</span></span>
+<span class="cstat-no" title="statement not covered" >        return itemType &amp;&amp; listSettings.allowedTypes.indexOf(itemType) != -1;</span>
+      }
+&nbsp;
+      /**
+       * Determines which drop effect to use for the given event. In Internet Explorer we have to
+       * ignore the effectAllowed field on dataTransfer, since we set a fake value in dragstart.
+       * In those cases we rely on dndState to filter effects. Read the design doc for more details:
+       * https://github.com/marceljuenemann/angular-drag-and-drop-lists/wiki/Data-Transfer-Design
+       */
+<span class="fstat-no" title="function not covered" >      function getDropEffect(event, ignoreDataTransfer) {</span>
+<span class="cstat-no" title="statement not covered" >        var effects = ALL_EFFECTS;</span>
+<span class="cstat-no" title="statement not covered" >        if (!ignoreDataTransfer) {</span>
+<span class="cstat-no" title="statement not covered" >          effects = filterEffects(effects, event.dataTransfer.effectAllowed);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (dndState.isDragging) {</span>
+<span class="cstat-no" title="statement not covered" >          effects = filterEffects(effects, dndState.effectAllowed);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (attr.dndEffectAllowed) {</span>
+<span class="cstat-no" title="statement not covered" >          effects = filterEffects(effects, attr.dndEffectAllowed);</span>
+        }
+        // MacOS automatically filters dataTransfer.effectAllowed depending on the modifier keys,
+        // therefore the following modifier keys will only affect other operating systems.
+<span class="cstat-no" title="statement not covered" >        if (!effects.length) {</span>
+<span class="cstat-no" title="statement not covered" >          return 'none';</span>
+        } else <span class="cstat-no" title="statement not covered" >if (event.ctrlKey &amp;&amp; effects.indexOf('copy') != -1) {</span>
+<span class="cstat-no" title="statement not covered" >          return 'copy';</span>
+        } else <span class="cstat-no" title="statement not covered" >if (event.altKey &amp;&amp; effects.indexOf('link') != -1) {</span>
+<span class="cstat-no" title="statement not covered" >          return 'link';</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          return effects[0];</span>
+        }
+      }
+&nbsp;
+      /**
+       * Small helper function that cleans up if we aborted a drop.
+       */
+<span class="fstat-no" title="function not covered" >      function stopDragover() {</span>
+<span class="cstat-no" title="statement not covered" >        placeholder.remove();</span>
+<span class="cstat-no" title="statement not covered" >        element.removeClass("dndDragover");</span>
+<span class="cstat-no" title="statement not covered" >        return true;</span>
+      }
+&nbsp;
+      /**
+       * Invokes a callback with some interesting parameters and returns the callbacks return value.
+       */
+<span class="fstat-no" title="function not covered" >      function invokeCallback(expression, event, dropEffect, itemType, index, item) {</span>
+<span class="cstat-no" title="statement not covered" >        return $parse(expression)(scope, {</span>
+          callback: dndState.callback,
+          dropEffect: dropEffect,
+          event: event,
+          external: !dndState.isDragging,
+          index: index !== undefined ? index : getPlaceholderIndex(),
+          item: item || undefined,
+          type: itemType
+        });
+      }
+&nbsp;
+      /**
+       * We use the position of the placeholder node to determine at which position of the array the
+       * object needs to be inserted
+       */
+<span class="fstat-no" title="function not covered" >      function getPlaceholderIndex() {</span>
+<span class="cstat-no" title="statement not covered" >        return Array.prototype.indexOf.call(listNode.children, placeholderNode);</span>
+      }
+&nbsp;
+      /**
+       * Tries to find a child element that has the dndPlaceholder class set. If none was found, a
+       * new li element is created.
+       */
+<span class="fstat-no" title="function not covered" >      function getPlaceholderElement() {</span>
+<span class="cstat-no" title="statement not covered" >        var placeholder;</span>
+<span class="cstat-no" title="statement not covered" >        angular.forEach(element.children(), <span class="fstat-no" title="function not covered" >function(childNode) {</span></span>
+<span class="cstat-no" title="statement not covered" >          var child = angular.element(childNode);</span>
+<span class="cstat-no" title="statement not covered" >          if (child.hasClass('dndPlaceholder')) {</span>
+<span class="cstat-no" title="statement not covered" >            placeholder = child;</span>
+          }
+        });
+<span class="cstat-no" title="statement not covered" >        return placeholder || angular.element("&lt;li class='dndPlaceholder'&gt;&lt;/li&gt;");</span>
+      }
+    };
+  }]);
+&nbsp;
+  /**
+   * Use the dnd-nodrag attribute inside of dnd-draggable elements to prevent them from starting
+   * drag operations. This is especially useful if you want to use input elements inside of
+   * dnd-draggable elements or create specific handle elements. Note: This directive does not work
+   * in Internet Explorer 9.
+   */
+<span class="cstat-no" title="statement not covered" >  dndLists.directive('dndNodrag', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function(scope, element, attr) {</span></span>
+      // Set as draggable so that we can cancel the events explicitly
+<span class="cstat-no" title="statement not covered" >      element.attr("draggable", "true");</span>
+&nbsp;
+      /**
+       * Since the element is draggable, the browser's default operation is to drag it on dragstart.
+       * We will prevent that and also stop the event from bubbling up.
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('dragstart', <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (!event._dndHandle) {</span>
+          // If a child element already reacted to dragstart and set a dataTransfer object, we will
+          // allow that. For example, this is the case for user selections inside of input elements.
+<span class="cstat-no" title="statement not covered" >          if (!(event.dataTransfer.types &amp;&amp; event.dataTransfer.types.length)) {</span>
+<span class="cstat-no" title="statement not covered" >            event.preventDefault();</span>
+          }
+<span class="cstat-no" title="statement not covered" >          event.stopPropagation();</span>
+        }
+      });
+&nbsp;
+      /**
+       * Stop propagation of dragend events, otherwise dnd-moved might be triggered and the element
+       * would be removed.
+       */
+<span class="cstat-no" title="statement not covered" >      element.on('dragend', <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+<span class="cstat-no" title="statement not covered" >        if (!event._dndHandle) {</span>
+<span class="cstat-no" title="statement not covered" >          event.stopPropagation();</span>
+        }
+      });
+    };
+  });
+&nbsp;
+  /**
+   * Use the dnd-handle directive within a dnd-nodrag element in order to allow dragging with that
+   * element after all. Therefore, by combining dnd-nodrag and dnd-handle you can allow
+   * dnd-draggable elements to only be dragged via specific "handle" elements. Note that Internet
+   * Explorer will show the handle element as drag image instead of the dnd-draggable element. You
+   * can work around this by styling the handle element differently when it is being dragged. Use
+   * the CSS selector .dndDragging:not(.dndDraggingSource) [dnd-handle] for that.
+   */
+<span class="cstat-no" title="statement not covered" >  dndLists.directive('dndHandle', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function(scope, element, attr) {</span></span>
+<span class="cstat-no" title="statement not covered" >      element.attr("draggable", "true");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      element.on('dragstart dragend', <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        event = event.originalEvent || event;</span>
+<span class="cstat-no" title="statement not covered" >        event._dndHandle = true;</span>
+      });
+    };
+  });
+&nbsp;
+  /**
+   * Filters an array of drop effects using a HTML5 effectAllowed string.
+   */
+<span class="fstat-no" title="function not covered" >  function filterEffects(effects, effectAllowed) {</span>
+<span class="cstat-no" title="statement not covered" >    if (effectAllowed == 'all') <span class="cstat-no" title="statement not covered" >return effects;</span></span>
+<span class="cstat-no" title="statement not covered" >    return effects.filter(<span class="fstat-no" title="function not covered" >function(effect) {</span></span>
+<span class="cstat-no" title="statement not covered" >      return effectAllowed.toLowerCase().indexOf(effect) != -1;</span>
+    });
+  }
+&nbsp;
+  /**
+   * For some features we need to maintain global state. This is done here, with these fields:
+   * - callback: A callback function set at dragstart that is passed to internal dropzone handlers.
+   * - dropEffect: Set in dragstart to "none" and to the actual value in the drop handler. We don't
+   *   rely on the dropEffect passed by the browser, since there are various bugs in Chrome and
+   *   Safari, and Internet Explorer defaults to copy if effectAllowed is copyMove.
+   * - effectAllowed: Set in dragstart based on dnd-effect-allowed. This is needed for IE because
+   *   setting effectAllowed on dataTransfer might result in an undesired cursor.
+   * - isDragging: True between dragstart and dragend. Falsy for drops from external sources.
+   * - itemType: The item type of the dragged element set via dnd-type. This is needed because IE
+   *   and Edge don't support custom mime types that we can use to transfer this information.
+   */
+<span class="cstat-no" title="statement not covered" >  var dndState = {};</span>
+&nbsp;
+})(angular.module('dndLists', []));
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Fri Apr 21 2017 09:25:06 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
